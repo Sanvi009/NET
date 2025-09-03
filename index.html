@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Speed Testing</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Test your internet connection speed with our advanced network testing technology. Check download speed, upload speed, ping, and jitter.">
+    <meta name="keywords" content="internet speed test, speed test, network test, bandwidth test, download speed, upload speed">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://net-speed-testing.com/">
+    <meta property="og:title" content="Net Speed Testing">
+    <meta property="og:description" content="Test your internet connection speed with our advanced network testing technology.">
+    <meta property="og:image" content="https://net-speed-testing.com/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://net-speed-testing.com/">
+    <meta property="twitter:title" content="Net Speed Testing">
+    <meta property="twitter:description" content="Test your internet connection speed with our advanced network testing technology.">
+    <meta property="twitter:image" content="https://net-speed-testing.com/logo.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h1>Net Speed Test</h1>
+        </header>
+
+        <div class="speed-container">
+            <div class="speed-results">
+                <div class="speed-value" id="speedValue">0</div>
+                <div class="speed-unit">Mbps download</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="speed-quality">
+                <div class="quality-item">
+                    <div class="quality-bar">
+                        <div class="quality-fill" id="downloadQuality"></div>
+                    </div>
+                    <div class="quality-label">Download</div>
+                </div>
+                <div class="quality-item">
+                    <div class="quality-bar">
+                        <div class="quality-fill" id="uploadQuality"></div>
+                    </div>
+                    <div class="quality-label">Upload</div>
+                </div>
+                <div class="quality-item">
+                    <div class="quality-bar">
+                        <div class="quality-fill" id="stabilityQuality"></div>
+                    </div>
+                    <div class="quality-label">Stability</div>
+                </div>
+            </div>
+
+            <div class="network-info">
+                <div class="network-item">
+                    <div class="network-value" id="pingValue">0</div>
+                    <div class="network-label">Ping</div>
+                </div>
+                <div class="network-item">
+                    <div class="network-value" id="jitterValue">0</div>
+                    <div class="network-label">Jitter</div>
+                </div>
+                <div class="network-item">
+                    <div class="network-value" id="packetLossValue">0%</div>
+                    <div class="network-label">Loss</div>
+                </div>
+            </div>
+
+            <div class="test-options">
+                <div class="option-button active" id="optionBasic">
+                    Basic
+                </div>
+                <div class="option-button" id="optionDetailed">
+                    Detailed
+                </div>
+                <div class="option-button" id="optionAdvanced">
+                    Advanced
+                </div>
+            </div>
+
+            <button class="test-button" id="testButton">
+                <i class="fas fa-bolt"></i> Start Test
+            </button>
+
+            <div class="connection-status" id="connectionStatus">
+                <div class="status-indicator"></div>
+                <span id="statusText">Ready to test your connection</span>
+            </div>
+        </div>
+
+        <div class="details-toggle" id="detailsToggle">
+            <i class="fas fa-chevron-down"></i> Detailed report
+        </div>
+
+        <div class="details-panel" id="detailsPanel">
+            <div class="detail-section">
+                <h3>Connection Details</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-value" id="downloadValue">0 Mbps</div>
+                        <div class="detail-label">Download Speed</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="uploadValue">0 Mbps</div>
+                        <div class="detail-label">Upload Speed</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="pingDetailValue">0 ms</div>
+                        <div class="detail-label">Ping</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="jitterDetailValue">0 ms</div>
+                        <div class="detail-label">Jitter</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>Network Information</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-value" id="serverValue">New York, USA</div>
+                        <div class="detail-label">Server Location</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="ipValue">192.168.1.1</div>
+                        <div class="detail-label">Your IP</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="ispValue">Internet Provider</div>
+                        <div class="detail-label">ISP</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="protocolValue">HTTPS</div>
+                        <div class="detail-label">Protocol</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Net Speed Test v2.5.1</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Help</a>
+            </div>
+            <p class="copyright">© 2023 Net Speed Test. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
