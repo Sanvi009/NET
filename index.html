@@ -1,33 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <script type="text/javascript">
-	atOptions = {
-		'key' : 'b75dc01633443b14f77dc29cc7f9bd23',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b75dc01633443b14f77dc29cc7f9bd23/invoke.js"></script>
-
-    <script async="async" data-cfasync="false" src="//pl27595517.revenuecpmgate.com/3455e3acf51a2681e3b7a266c42c9509/invoke.js"></script>
-<div id="container-3455e3acf51a2681e3b7a266c42c9509"></div>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CR5J0T5S6C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CR5J0T5S6C');
-</script>
-
-
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Net Speed Testing</title>
@@ -52,9 +25,470 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0C1120 0%, #1A243D 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+        }
+
+        .speed-container {
+            background: rgba(21, 30, 56, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 25px;
+        }
+
+        .speed-results {
+            margin-bottom: 25px;
+        }
+
+        .speed-value {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            transition: all 0.5s ease;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+        }
+
+        .speed-unit {
+            font-size: 1.2rem;
+            color: #94A3B8;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background-color: rgba(30, 41, 59, 0.6);
+            border-radius: 10px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .network-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .network-item {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 16px 10px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .network-item:hover {
+            background: rgba(37, 99, 235, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .network-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #60A5FA;
+            margin-bottom: 6px;
+        }
+
+        .network-label {
+            font-size: 0.75rem;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .test-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .option-button {
+            background: rgba(30, 41, 59, 0.7);
+            color: #94A3B8;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .option-button.active {
+            background: rgba(37, 99, 235, 0.2);
+            color: #60A5FA;
+            border-color: #3B82F6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+        }
+
+        .test-button {
+            background: linear-gradient(90deg, #3B82F6, #2563EB);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 14px;
+            cursor: pointer;
+            margin: 20px 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+            width: 100%;
+            letter-spacing: 0.5px;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.5);
+        }
+
+        .test-button:active {
+            transform: translateY(0);
+        }
+
+        .test-button:disabled {
+            background: #334155;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .testing .status-indicator {
+            background: #3B82F6;
+            animation: pulse 1.5s infinite;
+        }
+
+        .details-toggle {
+            color: #60A5FA;
+            cursor: pointer;
+            margin: 25px 0;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            padding: 10px 16px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .details-toggle:hover {
+            background: rgba(37, 99, 235, 0.15);
+        }
+
+        .details-panel {
+            background: rgba(21, 30, 56, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .details-panel.show {
+            display: block;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-section h3 {
+            font-size: 1rem;
+            color: #60A5FA;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            background: rgba(30, 41, 59, 0.6);
+            padding: 16px;
+            border-radius: 14px;
+        }
+
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 35px;
+            color: #64748B;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: #64748B;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #60A5FA;
+        }
+
+        .loading-dots {
+            display: inline-flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @media (max-width: 480px) {
+            .speed-value {
+                font-size: 3.5rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .network-info {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .network-item {
+                padding: 14px 8px;
+            }
+
+            .network-value {
+                font-size: 1.1rem;
+            }
+
+            .test-button {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        .speed-quality {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .quality-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .quality-bar {
+            width: 70px;
+            height: 6px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .quality-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            transition: width 1s ease;
+            border-radius: 10px;
+        }
+
+        .quality-label {
+            font-size: 0.75rem;
+            color: #94A3B8;
+            font-weight: 600;
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: #64748B;
+        }
+
+        /* Ad container styles */
+        .ad-container {
+            margin: 20px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .ad-label {
+            font-size: 0.7rem;
+            color: #64748B;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Top Banner Ad (728x90) -->
+    <div class="ad-container" style="max-width: 728px; height: 90px;">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'b75dc01633443b14f77dc29cc7f9bd23',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/b75dc01633443b14f77dc29cc7f9bd23/invoke.js"></script>
+    </div>
+
     <div class="container">
         <header>
             <div class="logo">
@@ -181,6 +615,12 @@
             </div>
         </div>
 
+        <!-- Native Banner Ad -->
+        <div class="ad-container" style="margin-top: 30px;">
+            <script async="async" data-cfasync="false" src="//pl27595517.revenuecpmgate.com/3455e3acf51a2681e3b7a266c42c9509/invoke.js"></script>
+            <div id="container-3455e3acf51a2681e3b7a266c42c9509"></div>
+        </div>
+
         <footer>
             <p>Net Speed Test v2.5.1</p>
             <div class="footer-links">
@@ -192,6 +632,321 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Popunder Ad (loaded at the end to not interfere with page loading) -->
+    <script type='text/javascript' src='//pl27595591.revenuecpmgate.com/13/a6/b8/13a6b8bc021de77c57115ae54117d296.js'></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const speedValue = document.getElementById('speedValue');
+            const progressBar = document.getElementById('progressBar');
+            const testButton = document.getElementById('testButton');
+            const detailsToggle = document.getElementById('detailsToggle');
+            const detailsPanel = document.getElementById('detailsPanel');
+            const statusText = document.getElementById('statusText');
+            const connectionStatus = document.getElementById('connectionStatus');
+
+            // Network info elements
+            const pingValue = document.getElementById('pingValue');
+            const jitterValue = document.getElementById('jitterValue');
+            const packetLossValue = document.getElementById('packetLossValue');
+
+            // Detailed stats elements
+            const downloadValue = document.getElementById('downloadValue');
+            const uploadValue = document.getElementById('uploadValue');
+            const pingDetailValue = document.getElementById('pingDetailValue');
+            const jitterDetailValue = document.getElementById('jitterDetailValue');
+            const serverValue = document.getElementById('serverValue');
+            const ipValue = document.getElementById('ipValue');
+            const ispValue = document.getElementById('ispValue');
+            const protocolValue = document.getElementById('protocolValue');
+
+            // Quality indicators
+            const downloadQuality = document.getElementById('downloadQuality');
+            const uploadQuality = document.getElementById('uploadQuality');
+            const stabilityQuality = document.getElementById('stabilityQuality');
+
+            // Test options
+            const optionBasic = document.getElementById('optionBasic');
+            const optionDetailed = document.getElementById('optionDetailed');
+            const optionAdvanced = document.getElementById('optionAdvanced');
+
+            // Test state
+            let testInProgress = false;
+            let testMode = 'basic'; // 'basic', 'detailed', 'advanced'
+
+            // Server locations
+            const servers = [
+                'New York, USA',
+                'London, UK',
+                'Tokyo, Japan',
+                'Sydney, Australia',
+                'Frankfurt, Germany',
+                'Singapore',
+            ];
+
+            // ISPs
+            const isps = [
+                'Comcast Business',
+                'AT&T Enterprise',
+                'Verizon Business',
+                'Spectrum Enterprise',
+                'Google Fiber Business',
+            ];
+
+            // Protocols
+            const protocols = ['HTTPS', 'HTTP/2', 'HTTP/3', 'QUIC'];
+
+            // Initialize
+            resetUI();
+            generateFakeIP();
+            getISP();
+            updateProtocol();
+
+            // Event listeners
+            testButton.addEventListener('click', startTest);
+            detailsToggle.addEventListener('click', toggleDetails);
+
+            // Test option event listeners
+            optionBasic.addEventListener('click', () => setTestMode('basic'));
+            optionDetailed.addEventListener('click', () => setTestMode('detailed'));
+            optionAdvanced.addEventListener('click', () => setTestMode('advanced'));
+
+            function setTestMode(mode) {
+                testMode = mode;
+
+                // Update UI to reflect active mode
+                optionBasic.classList.remove('active');
+                optionDetailed.classList.remove('active');
+                optionAdvanced.classList.remove('active');
+
+                if (mode === 'basic') optionBasic.classList.add('active');
+                if (mode === 'detailed') optionDetailed.classList.add('active');
+                if (mode === 'advanced') optionAdvanced.classList.add('active');
+
+                statusText.textContent = `Ready for ${mode} analysis`;
+            }
+
+            function startTest() {
+                if (testInProgress) return;
+
+                testInProgress = true;
+                resetUI();
+                testButton.disabled = true;
+                connectionStatus.classList.add('testing');
+                testButton.innerHTML = '<div class="loading-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div> Analyzing';
+                statusText.textContent = "Testing ping...";
+
+                // Simulate ping test first
+                simulatePingTest().then(ping => {
+                    pingValue.textContent = ping;
+                    pingDetailValue.textContent = ping + ' ms';
+
+                    // Simulate jitter
+                    const jitter = Math.max(1, Math.floor(ping * 0.15 + Math.random() * 5));
+                    jitterValue.textContent = jitter;
+                    jitterDetailValue.textContent = jitter + ' ms';
+
+                    // Simulate packet loss (0% to 2% based on ping)
+                    const packetLoss = Math.min(2, (ping / 100) * Math.random()).toFixed(1);
+                    packetLossValue.textContent = `${packetLoss}%`;
+
+                    // Update stability quality based on ping and jitter
+                    const stability = Math.max(0, 100 - (ping / 2) - (jitter * 2));
+                    stabilityQuality.style.width = `${stability}%`;
+
+                    statusText.textContent = "Testing download speed...";
+
+                    // Then simulate download speed test
+                    simulateSpeedTest('download').then(downloadSpeed => {
+                        downloadValue.textContent = downloadSpeed + ' Mbps';
+                        speedValue.textContent = downloadSpeed;
+
+                        // Update download quality
+                        const dlQuality = Math.min(100, (downloadSpeed / 10));
+                        downloadQuality.style.width = `${dlQuality}%`;
+
+                        // For detailed and advanced modes, simulate upload test
+                        if (testMode !== 'basic') {
+                            statusText.textContent = "Testing upload speed...";
+
+                            // Simulate upload speed test
+                            simulateSpeedTest('upload').then(uploadSpeed => {
+                                uploadValue.textContent = uploadSpeed + ' Mbps';
+
+                                // Update upload quality
+                                const ulQuality = Math.min(100, (uploadSpeed / 5));
+                                uploadQuality.style.width = `${ulQuality}%`;
+
+                                finishTest();
+                            });
+                        } else {
+                            // For basic mode, skip upload test
+                            uploadValue.textContent = "N/A";
+                            finishTest();
+                        }
+                    });
+                });
+
+                function finishTest() {
+                    statusText.textContent = "Analysis complete";
+                    testButton.innerHTML = '<i class="fas fa-redo"></i> Test Again';
+                    testButton.disabled = false;
+                    connectionStatus.classList.remove('testing');
+                    testInProgress = false;
+
+                    // Random server location
+                    const randomServer = servers[Math.floor(Math.random() * servers.length)];
+                    serverValue.textContent = randomServer;
+                }
+            }
+
+            function simulatePingTest() {
+                return new Promise(resolve => {
+                    // Simulate network delay based on test mode
+                    const delay = testMode === 'advanced' ? 1000 : 1500;
+
+                    setTimeout(() => {
+                        // Simulate ping with different ranges based on mode
+                        let ping;
+                        if (testMode === 'advanced') {
+                            ping = Math.floor(Math.random() * 30) + 5; // 5-35ms for advanced
+                        } else if (testMode === 'detailed') {
+                            ping = Math.floor(Math.random() * 50) + 10; // 10-60ms for detailed
+                        } else {
+                            ping = Math.floor(Math.random() * 70) + 15; // 15-85ms for basic
+                        }
+                        resolve(ping);
+                    }, delay);
+                });
+            }
+
+            function simulateSpeedTest(type) {
+                return new Promise(resolve => {
+                    // Different durations based on test mode and type
+                    let duration;
+                    if (testMode === 'advanced') {
+                        duration = type === 'download' ? 4000 : 3500;
+                    } else if (testMode === 'detailed') {
+                        duration = type === 'download' ? 3000 : 2500;
+                    } else {
+                        duration = 2500; // Basic mode only tests download
+                    }
+
+                    const interval = 50;
+                    const steps = duration / interval;
+                    let currentStep = 0;
+
+                    // Simulate different internet speeds based on mode and type
+                    let maxSpeed;
+                    if (type === 'download') {
+                        if (testMode === 'advanced') {
+                            maxSpeed = Math.random() * 900 + 100; // 100-1000 Mbps
+                        } else if (testMode === 'detailed') {
+                            maxSpeed = Math.random() * 700 + 50; // 50-750 Mbps
+                        } else {
+                            maxSpeed = Math.random() * 500 + 30; // 30-530 Mbps for basic
+                        }
+                    } else {
+                        // Upload speeds are typically slower
+                        if (testMode === 'advanced') {
+                            maxSpeed = Math.random() * 100 + 20; // 20-120 Mbps
+                        } else {
+                            maxSpeed = Math.random() * 80 + 10; // 10-90 Mbps
+                        }
+                    }
+
+                    const testInterval = setInterval(() => {
+                        currentStep++;
+
+                        // Calculate progress percentage
+                        const progress = (currentStep / steps) * 100;
+                        progressBar.style.width = `${progress}%`;
+
+                        if (type === 'download') {
+                            // Calculate current speed using easing function for realistic acceleration
+                            const progressRatio = currentStep / steps;
+                            const easedProgress = 1 - Math.pow(1 - progressRatio, 3);
+                            const currentSpeed = Math.floor(easedProgress * maxSpeed);
+
+                            // Add some fluctuations to simulate real network conditions
+                            const fluctuation = maxSpeed * 0.1 * Math.sin(currentStep * 0.5);
+                            const fluctuatedSpeed = Math.max(0, currentSpeed + fluctuation);
+
+                            // Update speed display
+                            speedValue.textContent = Math.floor(fluctuatedSpeed);
+
+                            // Change color based on speed
+                            updateSpeedColor(fluctuatedSpeed);
+                        }
+
+                        // End test
+                        if (currentStep >= steps) {
+                            clearInterval(testInterval);
+                            progressBar.style.width = '100%';
+
+                            resolve(Math.floor(maxSpeed));
+                        }
+                    }, interval);
+                });
+            }
+
+            function updateSpeedColor(speed) {
+                if (speed < 20) {
+                    speedValue.style.color = '#EF4444';
+                } else if (speed < 50) {
+                    speedValue.style.color = '#F59E0B';
+                } else if (speed < 100) {
+                    speedValue.style.color = '#10B981';
+                } else {
+                    speedValue.style.color = '#FFFFFF';
+                }
+            }
+
+            function resetUI() {
+                speedValue.textContent = '0';
+                speedValue.style.color = '#FFFFFF';
+                progressBar.style.width = '0%';
+                downloadValue.textContent = '0 Mbps';
+                uploadValue.textContent = '0 Mbps';
+                pingValue.textContent = '0';
+                pingDetailValue.textContent = '0 ms';
+                jitterValue.textContent = '0';
+                jitterDetailValue.textContent = '0 ms';
+                packetLossValue.textContent = '0%';
+                downloadQuality.style.width = '0%';
+                uploadQuality.style.width = '0%';
+                stabilityQuality.style.width = '0%';
+            }
+
+            function toggleDetails() {
+                detailsPanel.classList.toggle('show');
+
+                if (detailsPanel.classList.contains('show')) {
+                    detailsToggle.innerHTML = '<i class="fas fa-chevron-up"></i> Hide detailed report';
+                } else {
+                    detailsToggle.innerHTML = '<i class="fas fa-chevron-down"></i> Detailed report';
+                }
+            }
+
+            function generateFakeIP() {
+                // Generate a random IP for demonstration
+                const ip = `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+                ipValue.textContent = ip;
+            }
+
+            function getISP() {
+                // Random ISP for demonstration
+                const isp = isps[Math.floor(Math.random() * isps.length)];
+                ispValue.textContent = isp;
+            }
+
+            function updateProtocol() {
+                // Random protocol for demonstration
+                const protocol = protocols[Math.floor(Math.random() * protocols.length)];
+                protocolValue.textContent = protocol;
+            }
+        });
+    </script>
 </body>
 </html>
